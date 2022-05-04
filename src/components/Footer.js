@@ -1,7 +1,7 @@
 import React from "react";
 
-const Footer = ({ title, darkMode }) => {
-  return <footer className={darkMode ? "dark-mode" : ""}>{title}</footer>;
+const Footer = ({ title }) => {
+  return <footer>{title}</footer>;
 };
 
 export default Footer;

@@ -1,18 +1,15 @@
 import React from "react";
+import Navbar from "./Navbar";
 
-const Header = ({ title, darkMode, setDarkMode }) => {
+import logo from "../assets/img/logo.svg";
+
+const Header = () => {
   return (
-    <header className={darkMode ? "dark-mode" : ""}>
-      <>{title}</>
-      <>
-        <button
-          onClick={() => {
-            setDarkMode(!darkMode);
-          }}
-        >
-          Dark Mode
-        </button>
-      </>
+    <header>
+      <div className="top-header">
+        <img src={logo} alt="vinted logo" />
+      </div>
+      <Navbar />
     </header>
   );
 };
