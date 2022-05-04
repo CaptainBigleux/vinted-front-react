@@ -148,5 +148,27 @@ footer {
   color: grey;
 }
 
+.offer-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.offer-images-holder {
+  flex: 75%;
+  background-color: lightblue;
+}
+
+.offer-images {
+}
+.offer-image-solo {
+}
+
+.side-cart {
+  flex: 25%;
+  background-color: red;
+}
+
 @media (max-width: 1200px) {
 }
