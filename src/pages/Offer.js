@@ -8,16 +8,15 @@ import axios from "axios";
 
 const Offer = () => {
   const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
-  const { _id } = useParams(); // _id
+  const { _id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios(
         `https://lereacteur-vinted-api.herokuapp.com/offer/${_id}`
       );
-
       setData(response.data);
       setIsLoading(false);
     };
@@ -29,9 +28,9 @@ const Offer = () => {
       {!isLoading ? (
         <main className="offer-holder">
           <div className="offer-images-holder">
-            {data.product_pictures.map((img, index) => {
+            {data.product_pictures.map((img) => {
               return (
-                <div className="offer-images">
+                <div key={img.asset_id} className="offer-images">
                   <img
                     className="offer-image-solo"
                     src={img.secure_url}
