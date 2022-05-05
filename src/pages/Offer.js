@@ -21,7 +21,7 @@ const Offer = () => {
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <>
