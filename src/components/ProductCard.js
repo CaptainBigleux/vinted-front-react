@@ -8,13 +8,25 @@ const ProductCard = ({
   //   product_name,
   //   product_description,
   product_price,
-  //   owner,
+  owner,
   product_image,
   //   product_date,
 }) => {
   return (
     <Link to={`offer/${_id}`} className="link-product-card">
       <div className="product-card">
+        <div className="product-card-avatar-holder">
+          {owner.account.avatar ? (
+            <img
+              className="product-card-avatar-image"
+              src={owner.account.avatar.secure_url}
+              alt="avatar"
+            />
+          ) : null}
+          <span className="product-card-username">
+            {owner.account.username.toString()}
+          </span>
+        </div>
         <img
           className="product-card-image"
           src={product_image.secure_url}
