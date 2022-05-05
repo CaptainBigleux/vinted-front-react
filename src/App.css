@@ -46,6 +46,161 @@ header {
 .top-header {
   display: flex;
   align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+}
+
+.top-header-input-holder {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: gainsboro;
+  border-radius: 3px;
+  margin: 0 10px;
+}
+
+.top-header-input-icon {
+  position: absolute;
+  left: 7.5px;
+}
+
+.top-header-input-search {
+  border: none;
+  width: 100%;
+  margin-left: 20px;
+  background-color: gainsboro;
+  height: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  outline: none;
+}
+
+.top-header-signup-btn {
+  color: var(--vinted-color);
+  border-radius: 4px;
+  border: 1px solid var(--vinted-color);
+  padding: 7.5px;
+}
+
+.top-header-login-btn {
+  color: var(--vinted-color);
+  border-radius: 4px;
+  border: 1px solid var(--vinted-color);
+  padding: 7.5px;
+}
+
+.top-header-disconnect-btn {
+  color: var(--vinted-color);
+  border-radius: 4px;
+  border: 1px solid var(--vinted-color);
+  padding: 7.5px;
+}
+
+.top-header-sellnow-btn {
+  background-color: var(--vinted-color);
+  color: white;
+  border-radius: 4px;
+  padding: 7.5px;
+}
+
+.top-header-info-btn {
+  color: grey;
+  border: 1px grey solid;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.top-header-language-select {
+  border: none;
+  color: grey;
+  padding: 7.5px;
+}
+
+.signup-modal {
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  position: fixed;
+}
+
+.signup-bg {
+  z-index: 1;
+  background-color: grey;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+}
+
+.signup-popup {
+  background-color: white;
+  opacity: 1;
+  z-index: 10;
+  height: 500px;
+  width: 400px;
+  margin: 0 auto;
+  z-index: 4;
+  position: fixed;
+  left: calc(50% - 200px);
+  top: calc(50% - 250px);
+  border-radius: 3px;
+}
+
+.signup-popup h3 {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.signup-form * {
+  border: none;
+  outline: none;
+}
+
+.signup-form > input:not(:last-child) {
+  width: 60%;
+  border-bottom: 1px solid grey;
+  margin: 8px 0;
+}
+.signup-form > input:last-child {
+  background-color: var(--vinted-color);
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 30%;
+}
+
+.signup-popup-newsletter-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.signup-popup-newsletter-checkbox {
+  margin-right: 10px;
+}
+
+.signup-popup-disclaimer {
+  font-size: 0.8rem;
+  text-align: center;
+  color: grey;
 }
 
 footer {
