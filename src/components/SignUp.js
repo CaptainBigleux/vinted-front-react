@@ -1,9 +1,39 @@
 import React from "react";
+import { useState } from "react";
 
-const SignUp = ({ setShowModal }) => {
+import Cookies from "js-cookie";
+
+import axios from "axios";
+
+const SignUp = ({ setShowModal, setIsLoggedIn }) => {
+  //    {
+  //   "email": "johndoe@lereacteur.io",
+  //   "username": "JohnDoe",
+  //   "password": "azerty",
+  //   "newsletter": true
+  // }
+
   //to prevent scrolling on modal
-  document.body.style.overflow = "hidden";
   //does not prevent scroll on mobile
+  document.body.style.overflow = "hidden";
+
+  const [signUpObject, setSignUpObject] = useState({});
+
+  // try to sign up
+  const trySignUp = async () => {
+    const response = await axios.post(
+      "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+      signUpObject
+    );
+    setIsLoggedIn(Cookies.set("authenticated", response.data.token));
+    setShowModal("none");
+  };
+
+  const buildRequestObject = (key, keyValue) => {
+    const objCopy = { ...signUpObject };
+    objCopy[key] = keyValue;
+    setSignUpObject(objCopy);
+  };
 
   return (
     <div className="signup-modal">
@@ -15,15 +45,37 @@ const SignUp = ({ setShowModal }) => {
       ></div>
       <div className="signup-popup">
         <h3>S'inscrire</h3>
-        <form className="signup-form" action="submit">
-          <input type="text" placeholder="Nom d'utilisateur" />
-          <input type="text" placeholder="Email" />
-          <input type="text" placeholder="Mot de passe" />
+        <div className="signup-holder">
+          <input
+            type="text"
+            placeholder="Nom d'utilisateur"
+            onChange={(event) => {
+              buildRequestObject("username", event.target.value);
+            }}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(event) => {
+              buildRequestObject("email", event.target.value);
+            }}
+          />
+          <input
+            type="password"
+            placeholder="Mot de passe"
+            onChange={(event) => {
+              buildRequestObject("password", event.target.value);
+            }}
+          />
           <div className="signup-popup-newsletter-holder">
             <p>
               <input
                 className="signup-popup-newsletter-checkbox"
                 type="checkbox"
+                value="newsletter"
+                onChange={(event) => {
+                  buildRequestObject("newsletter", event.target.checked);
+                }}
               />
               <span>S'inscrire à notre newsletter</span>
             </p>
@@ -33,8 +85,15 @@ const SignUp = ({ setShowModal }) => {
               avoir au moins 18 ans.
             </p>
           </div>
-          <input type="submit" value="S'inscrire" />
-        </form>
+          <button
+            className="signup-btn"
+            onClick={() => {
+              trySignUp();
+            }}
+          >
+            S'inscrire
+          </button>
+        </div>
       </div>
     </div>
   );

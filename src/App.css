@@ -119,7 +119,8 @@ header {
   padding: 7.5px;
 }
 
-.signup-modal {
+.signup-modal,
+.login-modal {
   height: 100vh;
   width: 100vw;
   top: 0;
@@ -128,7 +129,8 @@ header {
   position: fixed;
 }
 
-.signup-bg {
+.signup-bg,
+.login-bg {
   z-index: 1;
   background-color: grey;
   top: 0;
@@ -140,7 +142,8 @@ header {
   z-index: 3;
 }
 
-.signup-popup {
+.signup-popup,
+.login-popup {
   background-color: white;
   opacity: 1;
   z-index: 10;
@@ -154,12 +157,14 @@ header {
   border-radius: 3px;
 }
 
-.signup-popup h3 {
+.signup-popup h3,
+.login-popup h3 {
   margin: 30px 0;
   text-align: center;
 }
 
-.signup-form {
+.signup-holder,
+.login-holder {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -167,17 +172,20 @@ header {
   gap: 30px;
 }
 
-.signup-form * {
+.signup-holder *,
+.login-holder * {
   border: none;
   outline: none;
 }
 
-.signup-form > input:not(:last-child) {
+.signup-holder > input,
+.login-holder > input {
   width: 60%;
   border-bottom: 1px solid grey;
   margin: 8px 0;
 }
-.signup-form > input:last-child {
+.signup-btn,
+.login-btn {
   background-color: var(--vinted-color);
   padding: 10px;
   color: white;

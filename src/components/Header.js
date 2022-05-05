@@ -41,6 +41,8 @@ const Header = () => {
             <button
               className="top-header-disconnect-btn"
               onClick={() => {
+                Cookies.remove("authenticated");
+                //string to bool === false which is what I want
                 setIsLoggedIn((prevState) => !prevState);
               }}
             >
@@ -75,9 +77,9 @@ const Header = () => {
         <Navbar />
       </header>
       {showModal === "none" ? null : showModal === "signup" ? (
-        <SignUp setShowModal={setShowModal} />
+        <SignUp setShowModal={setShowModal} setIsLoggedIn={setIsLoggedIn} />
       ) : (
-        <Login setShowModal={setShowModal} />
+        <Login setShowModal={setShowModal} setIsLoggedIn={setIsLoggedIn} />
       )}
     </>
   );
