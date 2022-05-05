@@ -9,6 +9,17 @@ const SideCart = ({
   //   product_date,
   //   _id,
 }) => {
+  const checkAndAddItem = (elemToCheck) => {
+    let elemToReturn;
+    {
+      product_details.find((el) => el[`${elemToCheck}`])
+        ? (elemToReturn = product_details.find((el) => el[`${elemToCheck}`])[
+            `${elemToCheck}`
+          ])
+        : (elemToReturn = null);
+    }
+    return elemToReturn;
+  };
   //TODO create function to refactor
   return (
     <aside className="side-cart">
@@ -16,57 +27,27 @@ const SideCart = ({
       <div className="side-cart-product-desc-first-part">
         <p className="side-cart-product-desc-item">
           <span>MARQUE</span>
-          <span>
-            {product_details.find((el) => el.MARQUE) ? (
-              <>{product_details.find((el) => el.MARQUE).MARQUE}</>
-            ) : null}
-          </span>
+          <span>{checkAndAddItem("MARQUE")}</span>
         </p>
         <p className="side-cart-product-desc-item">
           <span>TAILLE</span>
-          <span>
-            {product_details.find((el) => el.TAILLE) ? (
-              <>{product_details.find((el) => el.TAILLE).TAILLE}</>
-            ) : null}
-          </span>
+          <span>{checkAndAddItem("TAILLE")}</span>
         </p>
         <p className="side-cart-product-desc-item">
           <span>ÉTAT</span>
-          <span>
-            {product_details.find((el) => el.ÉTAT) ? (
-              <>{product_details.find((el) => el.ÉTAT).ÉTAT}</>
-            ) : null}
-          </span>
+          <span>{checkAndAddItem("ÉTAT")}</span>
         </p>
         <p className="side-cart-product-desc-item">
           <span>COULEUR</span>
-          <span>
-            {product_details.find((el) => el.COULEUR) ? (
-              <>{product_details.find((el) => el.COULEUR).COULEUR}</>
-            ) : null}
-          </span>
+          <span>{checkAndAddItem("COULEUR")}</span>
         </p>
         <p className="side-cart-product-desc-item">
           <span>EMPLACEMENT</span>
-          <span>
-            {product_details.find((el) => el.EMPLACEMENT) ? (
-              <>{product_details.find((el) => el.EMPLACEMENT).EMPLACEMENT}</>
-            ) : null}
-          </span>
+          <span>{checkAndAddItem("EMPLACEMENT")}</span>
         </p>
         <p className="side-cart-product-desc-item">
           <span>MODES DE PAIEMENT</span>
-          <span>
-            {product_details.find((el) => el["MODES DE PAIEMENT"]) ? (
-              <>
-                {
-                  product_details.find((el) => el["MODES DE PAIEMENT"])[
-                    "MODES DE PAIEMENT"
-                  ]
-                }
-              </>
-            ) : null}
-          </span>
+          <span>{checkAndAddItem("MODES DE PAIEMENT")}</span>
         </p>
       </div>
       <div className="side-cart-product-name-desc-holder">

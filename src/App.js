@@ -12,14 +12,14 @@ import "./App.css";
 const App = () => {
   return (
     <div className="app">
-      <Header />
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/offer/:_id" element={<Offer />}></Route>
         </Routes>
+        <Footer title="Made by Adrien Callioni" />
       </Router>
-      <Footer title="Made by Adrien Callioni" />
     </div>
   );
 };
