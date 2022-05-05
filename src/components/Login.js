@@ -52,6 +52,8 @@ const Login = ({ setShowModal, setIsLoggedIn }) => {
       <div
         className="login-bg"
         onClick={() => {
+          document.body.style.overflow = "scroll";
+
           setShowModal("none");
         }}
       ></div>

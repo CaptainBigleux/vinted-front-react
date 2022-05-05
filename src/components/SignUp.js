@@ -52,6 +52,8 @@ const SignUp = ({ setShowModal, setIsLoggedIn }) => {
       <div
         className="signup-bg"
         onClick={() => {
+          document.body.style.overflow = "scroll";
+
           setShowModal("none");
         }}
       ></div>
