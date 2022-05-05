@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 
+import { validateEmail, validatePassword } from "../HelperFunctions";
+
 import Cookies from "js-cookie";
 
 import axios from "axios";
@@ -18,15 +20,25 @@ const Login = ({ setShowModal, setIsLoggedIn }) => {
   document.body.style.overflow = "hidden";
 
   const [loginObject, setLoginObject] = useState({});
+  const [invalidPassword, setInvalidPassword] = useState(false);
+  const [invalidEmail, setInvalidEmail] = useState(false);
 
   // try to sign up
   const tryLogin = async () => {
-    const response = await axios.post(
-      "https://lereacteur-vinted-api.herokuapp.com/user/login",
-      loginObject
-    );
-    setIsLoggedIn(Cookies.set("authenticated", response.data.token));
-    setShowModal("none");
+    const checkEmail = validateEmail(loginObject.email);
+    checkEmail === true ? setInvalidEmail(false) : setInvalidEmail(true);
+
+    const checkPassword = validatePassword(loginObject.password);
+    checkPassword ? setInvalidPassword(false) : setInvalidPassword(true);
+
+    if (checkPassword && checkEmail) {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        loginObject
+      );
+      setIsLoggedIn(Cookies.set("authenticated", response.data.token));
+      setShowModal("none");
+    }
   };
 
   const buildRequestObject = (key, keyValue) => {
@@ -60,7 +72,15 @@ const Login = ({ setShowModal, setIsLoggedIn }) => {
               buildRequestObject("password", event.target.value);
             }}
           />
-
+          <div className="error-messages">
+            {invalidEmail ? <p>Email non valide. Veuillez réessayer.</p> : null}
+            {invalidPassword ? (
+              <p>
+                Votre mot de passe doit contenir une majuscule, une minuscle, un
+                chiffre ainsi qu'un caractère spécial.
+              </p>
+            ) : null}
+          </div>
           <button
             className="login-btn"
             onClick={() => {

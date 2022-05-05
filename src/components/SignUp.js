@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 
+import { validateEmail, validatePassword } from "../HelperFunctions";
+
 import Cookies from "js-cookie";
 
 import axios from "axios";
@@ -18,15 +20,25 @@ const SignUp = ({ setShowModal, setIsLoggedIn }) => {
   document.body.style.overflow = "hidden";
 
   const [signUpObject, setSignUpObject] = useState({});
+  const [invalidPassword, setInvalidPassword] = useState(false);
+  const [invalidEmail, setInvalidEmail] = useState(false);
 
   // try to sign up
   const trySignUp = async () => {
-    const response = await axios.post(
-      "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-      signUpObject
-    );
-    setIsLoggedIn(Cookies.set("authenticated", response.data.token));
-    setShowModal("none");
+    const checkEmail = validateEmail(signUpObject.email);
+    checkEmail === true ? setInvalidEmail(false) : setInvalidEmail(true);
+
+    const checkPassword = validatePassword(signUpObject.password);
+    checkPassword ? setInvalidPassword(false) : setInvalidPassword(true);
+
+    if (checkPassword && checkEmail) {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        signUpObject
+      );
+      setIsLoggedIn(Cookies.set("authenticated", response.data.token));
+      setShowModal("none");
+    }
   };
 
   const buildRequestObject = (key, keyValue) => {
@@ -84,6 +96,17 @@ const SignUp = ({ setShowModal, setIsLoggedIn }) => {
               Conditions et Politique de Confidentialité de Vinted. Je confirme
               avoir au moins 18 ans.
             </p>
+            <div className="error-messages">
+              {invalidEmail ? (
+                <p>Email non valide. Veuillez réessayer.</p>
+              ) : null}
+              {invalidPassword ? (
+                <p>
+                  Votre mot de passe doit contenir une majuscule, une minuscle,
+                  un chiffre ainsi qu'un caractère spécial.
+                </p>
+              ) : null}
+            </div>
           </div>
           <button
             className="signup-btn"

@@ -169,7 +169,7 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .signup-holder *,
@@ -190,8 +190,11 @@ header {
   padding: 10px;
   color: white;
   border-radius: 5px;
-  margin-top: 20px;
   width: 30%;
+}
+
+.login-btn {
+  width: 35%;
 }
 
 .signup-popup-newsletter-holder {
@@ -209,6 +212,12 @@ header {
   font-size: 0.8rem;
   text-align: center;
   color: grey;
+}
+
+.error-messages {
+  color: red;
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 footer {
