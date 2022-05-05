@@ -16,7 +16,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/offer/:_id" element={<Offer />}></Route>
+          <Route path="/offer/:id" element={<Offer />}></Route>
         </Routes>
         <Footer title="Made by Adrien Callioni" />
       </Router>

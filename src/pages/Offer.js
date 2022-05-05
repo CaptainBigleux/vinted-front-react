@@ -10,12 +10,12 @@ const Offer = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  const { _id } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios(
-        `https://lereacteur-vinted-api.herokuapp.com/offer/${_id}`
+        `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
       );
       setData(response.data);
       setIsLoading(false);
