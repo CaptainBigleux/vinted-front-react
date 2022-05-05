@@ -17,7 +17,8 @@ const SideCart = ({
           const keys = Object.keys(item);
           return (
             <p className="side-cart-product-desc-item" key={index}>
-              <span>{keys[0]}</span> : <span>{item[keys[0]]}</span>
+              <span>{keys[0]} :</span>
+              <span>{item[keys[0]]}</span>
             </p>
           );
         })}
