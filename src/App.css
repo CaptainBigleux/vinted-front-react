@@ -299,6 +299,7 @@ footer {
 .product-card-username {
   font-size: 0.8rem;
   color: black;
+  overflow: hidden;
 }
 
 .product-card-image {
@@ -347,7 +348,9 @@ footer {
   justify-content: center;
   align-items: center;
   width: 100%;
-  overflow-x: hidden;
+  flex-wrap: wrap;
+  overflow: scroll;
+  height: 100%;
 }
 
 .offer-images {
