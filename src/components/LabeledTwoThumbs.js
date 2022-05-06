@@ -2,10 +2,9 @@ import { Range, getTrackBackground } from "react-range";
 
 const STEP = 0.1;
 const MIN = 0;
-const MAX = 100;
+const MAX = 500;
 
 const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
-  //   console.log(priceValues);
   return (
     <div
       style={{
@@ -26,7 +25,7 @@ const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
             onTouchStart={props.onTouchStart}
             style={{
               ...props.style,
-              height: "36px",
+              height: "16px",
               display: "flex",
               width: "100%",
             }}
@@ -39,7 +38,7 @@ const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
                 borderRadius: "4px",
                 background: getTrackBackground({
                   values: priceValues,
-                  colors: ["#ccc", "#548BF4", "#ccc"],
+                  colors: ["#ccc", "#09adb6", "#ccc"],
                   min: MIN,
                   max: MAX,
                 }),
@@ -55,8 +54,8 @@ const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
             {...props}
             style={{
               ...props.style,
-              height: "42px",
-              width: "42px",
+              height: "21px",
+              width: "21px",
               borderRadius: "4px",
               backgroundColor: "#FFF",
               display: "flex",
@@ -75,7 +74,7 @@ const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
                 fontFamily: "Arial,Helvetica Neue,Helvetica,sans-serif",
                 padding: "4px",
                 borderRadius: "4px",
-                backgroundColor: "#548BF4",
+                backgroundColor: "#09adb6",
               }}
             >
               {priceValues[index].toFixed(1)}

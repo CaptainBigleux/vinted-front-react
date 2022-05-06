@@ -6,20 +6,22 @@ import ProductCard from "../components/ProductCard";
 
 import hero from "../assets/img/vinted-hero.jpeg";
 
-const Home = ({ sortByPrice, search }) => {
+const Home = ({ sortByPrice, search, priceValues }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
+      const reqQueries = `sort=${sortByPrice}&title=${search}&priceMin=${priceValues[0]}&priceMax=${priceValues[1]}`;
+
       const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sortByPrice}?title=${search}`
+        `https://lereacteur-vinted-api.herokuapp.com/offers?${reqQueries}`
       );
       setData(response.data.offers);
       setIsLoading(false);
     };
     fetchData();
-  }, [sortByPrice, search]);
+  }, [sortByPrice, search, priceValues]);
 
   // demander a Bastien s'il n'est pas plus judicieux de faire le filtre
   //en front plutot que de faire des requetes en back

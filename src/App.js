@@ -27,7 +27,13 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<Home filterByPrice={sortByPrice} />}
+            element={
+              <Home
+                sortByPrice={sortByPrice}
+                search={search}
+                priceValues={priceValues}
+              />
+            }
           ></Route>
           <Route path="/offer/:id" element={<Offer />}></Route>
         </Routes>
