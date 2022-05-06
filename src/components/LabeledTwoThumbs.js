@@ -38,7 +38,7 @@ const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
                 width: "100%",
                 borderRadius: "4px",
                 background: getTrackBackground({
-                  priceValues,
+                  values: priceValues,
                   colors: ["#ccc", "#548BF4", "#ccc"],
                   min: MIN,
                   max: MAX,
