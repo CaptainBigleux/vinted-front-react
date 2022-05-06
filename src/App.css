@@ -49,9 +49,11 @@ header {
   gap: 10px;
   padding: 5px 10px;
 }
+.top-header-input-search-and-filter {
+  flex: 1;
+}
 
 .top-header-input-holder {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,6 +77,48 @@ header {
   padding: 10px;
   border-radius: 3px;
   outline: none;
+}
+
+.top-header-filter-holder {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 20px;
+}
+
+.top-header-price-sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex: 30%;
+}
+
+.top-header-price-filter-slider {
+  flex: 70%;
+  height: 16px;
+  border-radius: 3px;
+  z-index: 2;
+}
+
+.top-header-slider-bg-bar {
+  height: 16px;
+  z-index: 1;
+  background-color: gainsboro;
+  background: linear-gradient();
+
+  width: 100%;
+}
+
+.top-header-slider-thumbs {
+  background-color: var(--vinted-color);
+  border-radius: 50%;
+  border: 1px solid white;
+  height: 16px;
+  width: 16px;
+  z-index: 3;
 }
 
 .top-header-signup-btn {
@@ -125,7 +169,7 @@ header {
   width: 100vw;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 5;
   position: fixed;
 }
 
@@ -139,7 +183,7 @@ header {
   position: fixed;
   height: 100%;
   width: 100%;
-  z-index: 3;
+  z-index: 6;
 }
 
 .signup-popup,
@@ -150,7 +194,7 @@ header {
   height: 500px;
   width: 400px;
   margin: 0 auto;
-  z-index: 4;
+  z-index: 7;
   position: fixed;
   left: calc(50% - 200px);
   top: calc(50% - 250px);
