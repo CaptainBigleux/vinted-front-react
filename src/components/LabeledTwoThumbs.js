@@ -4,6 +4,7 @@ const STEP = 0.1;
 const MIN = 0;
 const MAX = 500;
 
+//buttom components imported from the react-range doc. Modified with my states.
 const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
   return (
     <div

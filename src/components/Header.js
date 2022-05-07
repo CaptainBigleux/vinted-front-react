@@ -26,9 +26,9 @@ const Header = ({
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(
     Cookies.get("authenticated") || false
-  );
+  ); //get Cookie to know whether or not user is authenticated. If false then set state to false
 
-  const [showModal, setShowModal] = useState("none");
+  const [showModal, setShowModal] = useState("none"); // state to show modal. 3 "states". none = no modal. "signup" = signup modal. "login" = login modal.
 
   return (
     <>
@@ -45,6 +45,9 @@ const Header = ({
                 placeholder="Recherche des articles"
                 value={search}
                 onChange={(event) => {
+                  {
+                    /*search state is updated which create another axios request for filtering*/
+                  }
                   setSearch(event.target.value);
                 }}
               />
@@ -54,6 +57,9 @@ const Header = ({
                 <span>Trier par prix</span>
                 <Toggle
                   onChange={() => {
+                    {
+                      /*check whether sort is currently asc or desc and sets it to the !choice. updates axios request.*/
+                    }
                     const currentPriceSort =
                       sortByPrice === "price-asc" ? "price-desc" : "price-asc";
                     setSortByPrice(currentPriceSort);
@@ -61,6 +67,7 @@ const Header = ({
                 />
               </div>
               <div className="top-header-price-filter-slider">
+                {/*react-range slider. changing price values updates axios request*/}
                 <LabeledTwoThumbs
                   priceValues={priceValues}
                   setPriceValues={setPriceValues}
@@ -73,7 +80,7 @@ const Header = ({
               className="top-header-disconnect-btn"
               onClick={() => {
                 Cookies.remove("authenticated");
-                //string to bool === false which is what I want
+                //string to bool === false which is what I want. "authenticated" becomes false
                 setIsLoggedIn((prevState) => !prevState);
               }}
             >
@@ -107,6 +114,7 @@ const Header = ({
         </div>
         <Navbar />
       </header>
+      {/* here is where the modal appears if it is called */}
       {showModal === "none" ? null : showModal === "signup" ? (
         <SignUp setShowModal={setShowModal} setIsLoggedIn={setIsLoggedIn} />
       ) : (

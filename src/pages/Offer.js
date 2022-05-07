@@ -7,10 +7,10 @@ import SideCart from "../components/SideCart";
 import axios from "axios";
 
 const Offer = () => {
-  const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState(); // used to store axios request response
+  const [isLoading, setIsLoading] = useState(true); // used to wait whether axios request is done or not
 
-  const { id } = useParams();
+  const { id } = useParams(); // id retrieved when user clicks on a ProductCard. Used to get to the correct offer route
 
   useEffect(() => {
     const fetchData = async () => {

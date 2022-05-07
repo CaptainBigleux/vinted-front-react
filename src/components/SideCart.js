@@ -14,7 +14,9 @@ const SideCart = ({
       <p className="side-cart-product-price">{product_price} €</p>
       <div className="side-cart-product-desc-first-part">
         {product_details.map((item, index) => {
+          //get the keys in product details dynamically. product-details is an array of objects with only 1 key in them.
           const keys = Object.keys(item);
+          //map is looping on product details, keys[0] of item is always equal to the product details key we want.
           return (
             <p className="side-cart-product-desc-item" key={index}>
               <span>{keys[0]} :</span>

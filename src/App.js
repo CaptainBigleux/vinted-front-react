@@ -9,10 +9,12 @@ import Footer from "./components/Footer";
 import "./App.css";
 
 const App = () => {
-  const [sortByPrice, setSortByPrice] = useState("price-asc");
-  const [priceValues, setPriceValues] = useState([0, 100]);
-  const [search, setSearch] = useState("");
+  const [sortByPrice, setSortByPrice] = useState("price-asc"); //used to sort offers by price ascending or descending
+  const [priceValues, setPriceValues] = useState([0, 100]); // used to filter offers by prices
+  const [search, setSearch] = useState(""); //used to filter offers by title
 
+  //header => filters components + search + login/signup
+  //home => axios get request, links to offers
   return (
     <div className="app">
       <Router>

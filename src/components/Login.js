@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 
 import axios from "axios";
 
+//very similar to signup
 const Login = ({ setShowModal, setIsLoggedIn }) => {
   //    {
   //   "email": "johndoe@lereacteur.io",
@@ -19,28 +20,33 @@ const Login = ({ setShowModal, setIsLoggedIn }) => {
   //does not prevent scroll on mobile
   document.body.style.overflow = "hidden";
 
-  const [loginObject, setLoginObject] = useState({});
-  const [invalidPassword, setInvalidPassword] = useState(false);
-  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [loginObject, setLoginObject] = useState({}); //state with object to send to the post request. could also have created multiple states for each input field
+  const [invalidPassword, setInvalidPassword] = useState(false); // used for password validation
+  const [invalidEmail, setInvalidEmail] = useState(false); // used for email validation
 
   // try to sign up
   const tryLogin = async () => {
+    //check if email is valid.
     const checkEmail = validateEmail(loginObject.email);
     checkEmail === true ? setInvalidEmail(false) : setInvalidEmail(true);
 
+    //check if password is valid.
     const checkPassword = validatePassword(loginObject.password);
     checkPassword ? setInvalidPassword(false) : setInvalidPassword(true);
 
+    //if both are valid, make post request
     if (checkPassword && checkEmail) {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
         loginObject
       );
       setIsLoggedIn(Cookies.set("authenticated", response.data.token));
+      //update modal in header so that it disappears. Could also redirect to Home with useNavigate
       setShowModal("none");
     }
   };
 
+  //object built for the post request
   const buildRequestObject = (key, keyValue) => {
     const objCopy = { ...loginObject };
     objCopy[key] = keyValue;
@@ -52,8 +58,9 @@ const Login = ({ setShowModal, setIsLoggedIn }) => {
       <div
         className="login-bg"
         onClick={() => {
+          // if user clicks outside popup, restore scrolling
           document.body.style.overflow = "scroll";
-
+          //user wants out, remove modal
           setShowModal("none");
         }}
       ></div>
@@ -64,6 +71,7 @@ const Login = ({ setShowModal, setIsLoggedIn }) => {
             type="email"
             placeholder="Email"
             onChange={(event) => {
+              //object.email being built
               buildRequestObject("email", event.target.value);
             }}
           />
@@ -71,10 +79,12 @@ const Login = ({ setShowModal, setIsLoggedIn }) => {
             type="password"
             placeholder="Mot de passe"
             onChange={(event) => {
+              //object.password being built
               buildRequestObject("password", event.target.value);
             }}
           />
           <div className="error-messages">
+            {/* invalid email / password ? this shows up to alert the user */}
             {invalidEmail ? <p>Email non valide. Veuillez réessayer.</p> : null}
             {invalidPassword ? (
               <p>

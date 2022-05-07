@@ -7,13 +7,15 @@ import ProductCard from "../components/ProductCard";
 import hero from "../assets/img/vinted-hero.jpeg";
 
 const Home = ({ sortByPrice, search, priceValues }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(true); // used to wait whether axios request is done or not
+  const [data, setData] = useState(); // used to store axios request response
 
   useEffect(() => {
     const fetchData = async () => {
+      //build the query parameters
       const reqQueries = `sort=${sortByPrice}&title=${search}&priceMin=${priceValues[0]}&priceMax=${priceValues[1]}`;
 
+      //axios get request with query params
       const response = await axios.get(
         `https://lereacteur-vinted-api.herokuapp.com/offers?${reqQueries}`
       );
@@ -21,6 +23,7 @@ const Home = ({ sortByPrice, search, priceValues }) => {
       setIsLoading(false);
     };
     fetchData();
+    //refresh the request everytime one of these filter update (bad idea in practice)
   }, [sortByPrice, search, priceValues]);
 
   // demander a Bastien s'il n'est pas plus judicieux de faire le filtre
@@ -33,7 +36,7 @@ const Home = ({ sortByPrice, search, priceValues }) => {
         <div className="main-image-holder-info-card"></div>
       </div>
       <section className="category-holder">
-        <h2>CategoryName</h2>
+        <h2>Toutes catégories</h2>
         {!isLoading ? (
           <div className="product-cards-holder">
             {data.map((offer, index) => {
