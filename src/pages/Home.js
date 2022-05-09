@@ -49,14 +49,14 @@ const Home = ({
           <p>Prêts à faire du tri dans vos placard ?</p>
           <button
             onClick={() => {
-              isLoggedIn ? navigate("/") : setShowModal("login");
+              isLoggedIn ? navigate("/publish") : setShowModal("login");
             }}
           >
             Commencer à vendre
           </button>
         </div>
       </div>
-      <section>
+      <section className="category-holder">
         <h2>Toutes catégories</h2>
         {!isLoading ? (
           <div className="product-cards-holder">

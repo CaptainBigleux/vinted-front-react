@@ -24,7 +24,7 @@ const Offer = () => {
   }, [id]);
 
   return (
-    <>
+    <main>
       {!isLoading ? (
         <main className="offer-holder">
           <div className="offer-images-holder">
@@ -43,7 +43,7 @@ const Offer = () => {
           <SideCart {...data} />
         </main>
       ) : null}
-    </>
+    </main>
   );
 };
 

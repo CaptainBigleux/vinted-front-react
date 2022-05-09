@@ -335,6 +335,15 @@ footer {
   object-fit: cover;
 }
 
+.category-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+
 .product-cards-holder {
   margin: 0 20px;
   display: flex;
@@ -517,5 +526,92 @@ footer {
   padding: 10px;
 }
 
+.publish-page {
+  background-color: #ecedee;
+}
+
+.publish-holder {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+  gap: 20px;
+}
+
+.publish-holder > div:not(:first-child) {
+  background-color: white;
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid #dedede;
+}
+
+.publish-holder input {
+  border: none;
+  border-bottom: 1px solid #dedede;
+}
+
+.publish-add-picture {
+  height: 200px;
+}
+
+.publish-title-desc-holder {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.publish-add-details-holder {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.publish-price-holder {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.publish-inline-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #dedede;
+  flex: 1;
+  width: 100%;
+  padding: 0 30px;
+}
+.publish-inline-flex * {
+  width: 50%;
+}
+
+.publish-btn {
+  padding: 10px;
+  border-radius: 3px;
+  background-color: var(--vinted-color);
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 0 0 auto;
+}
+
 @media (max-width: 1200px) {
+}
+
+@media (max-width: 820px) {
+  .category-holder {
+    width: 100%;
+  }
+  .publish-holder {
+    width: 95%;
+  }
 }

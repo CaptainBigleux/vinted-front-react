@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Cookies from "js-cookie";
 
-import Header from "./components/Header";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
+import Publish from "./pages/Publish";
+
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 import "./App.css";
 
@@ -50,8 +52,9 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
               />
             }
-          ></Route>
-          <Route path="/offer/:id" element={<Offer />}></Route>
+          />
+          <Route path="/offer/:id" element={<Offer />} />
+          <Route path="/publish" element={<Publish />} />
         </Routes>
         <Footer title="Made by Adrien Callioni" />
       </Router>
