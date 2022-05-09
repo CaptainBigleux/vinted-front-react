@@ -101,6 +101,16 @@ const Login = ({ setShowModal, setIsLoggedIn }) => {
           >
             Se connecter
           </button>
+          <div className="switch-signup-login-holder">
+            Pas encore de compte ?
+            <button
+              onClick={() => {
+                setShowModal("signup");
+              }}
+            >
+              Inscrivez-vous !
+            </button>
+          </div>
         </div>
       </div>
     </div>

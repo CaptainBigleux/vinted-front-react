@@ -242,6 +242,17 @@ header {
   width: 35%;
 }
 
+.switch-signup-login-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.switch-signup-login-holder button {
+  color: var(--vinted-color);
+}
+
 .signup-popup-newsletter-holder {
   display: flex;
   justify-content: center;
@@ -305,7 +316,23 @@ footer {
   left: 20px;
   top: 40px;
   background-color: white;
-  border-radius: 2px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20%;
+  padding-left: 30px;
+}
+.main-image-holder-info-card > p {
+  font-size: 1.5rem;
+}
+
+.main-image-holder-info-card > button {
+  background-color: var(--vinted-color);
+  color: white;
+  border-radius: 3px;
+  padding: 10px;
 }
 
 .main-image {

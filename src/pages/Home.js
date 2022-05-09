@@ -1,17 +1,26 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import ProductCard from "../components/ProductCard";
 
 import hero from "../assets/img/vinted-hero.jpeg";
 
-const Home = ({ sortByPrice, search, priceValues }) => {
+const Home = ({
+  sortByPrice,
+  search,
+  priceValues,
+  setShowModal,
+  isLoggedIn,
+}) => {
   const [isLoading, setIsLoading] = useState(true); // used to wait whether axios request is done or not
   const [data, setData] = useState(); // used to store axios request response
 
   const [page, setPage] = useState(0);
   const [limitPerPage] = useState(10);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +45,16 @@ const Home = ({ sortByPrice, search, priceValues }) => {
     <main className="main-holder">
       <div className="main-image-holder">
         <img className="main-image" src={hero} alt="vinted main" />
-        <div className="main-image-holder-info-card"></div>
+        <div className="main-image-holder-info-card">
+          <p>Prêts à faire du tri dans vos placard ?</p>
+          <button
+            onClick={() => {
+              isLoggedIn ? navigate("/") : setShowModal("login");
+            }}
+          >
+            Commencer à vendre
+          </button>
+        </div>
       </div>
       <section className="category-holder">
         <h2>Toutes catégories</h2>

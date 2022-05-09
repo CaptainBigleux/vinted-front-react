@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
 
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import SignUp from "./SignUp";
@@ -12,8 +11,6 @@ import LabeledTwoThumbs from "./LabeledTwoThumbs";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 
-import Cookies from "js-cookie";
-
 import logo from "../assets/img/logo.svg";
 
 const Header = ({
@@ -23,13 +20,12 @@ const Header = ({
   setPriceValues,
   search,
   setSearch,
+  showModal,
+  setShowModal,
+  isLoggedIn,
+  setIsLoggedIn,
+  Cookies,
 }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    Cookies.get("authenticated") || false
-  ); //get Cookie to know whether or not user is authenticated. If false then set state to false
-
-  const [showModal, setShowModal] = useState("none"); // state to show modal. 3 "states". none = no modal. "signup" = signup modal. "login" = login modal.
-
   return (
     <>
       <header>
