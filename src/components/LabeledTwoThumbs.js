@@ -1,11 +1,14 @@
 import { Range, getTrackBackground } from "react-range";
 
+import { useState } from "react";
+
 const STEP = 0.1;
 const MIN = 0;
 const MAX = 500;
 
 //buttom components imported from the react-range doc. Modified with my states.
 const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
+  const [values, setValues] = useState(priceValues);
   return (
     <div
       style={{
@@ -15,11 +18,12 @@ const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
       }}
     >
       <Range
-        values={priceValues}
+        values={values}
         step={STEP}
         min={MIN}
         max={MAX}
-        onChange={(priceValues) => setPriceValues(priceValues)}
+        onChange={(values) => setValues(values)}
+        onFinalChange={(priceValues) => setPriceValues(priceValues)}
         renderTrack={({ props, children }) => (
           <div
             onMouseDown={props.onMouseDown}
@@ -38,7 +42,7 @@ const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
                 width: "100%",
                 borderRadius: "4px",
                 background: getTrackBackground({
-                  values: priceValues,
+                  values: values,
                   colors: ["#ccc", "#09adb6", "#ccc"],
                   min: MIN,
                   max: MAX,
@@ -78,7 +82,7 @@ const LabeledTwoThumbs = ({ priceValues, setPriceValues }) => {
                 backgroundColor: "#09adb6",
               }}
             >
-              {priceValues[index].toFixed(1)}
+              {values[index].toFixed(1)}
             </div>
             <div
               style={{

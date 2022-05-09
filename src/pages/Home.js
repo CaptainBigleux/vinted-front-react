@@ -10,10 +10,13 @@ const Home = ({ sortByPrice, search, priceValues }) => {
   const [isLoading, setIsLoading] = useState(true); // used to wait whether axios request is done or not
   const [data, setData] = useState(); // used to store axios request response
 
+  const [page, setPage] = useState(0);
+  const [limitPerPage] = useState(10);
+
   useEffect(() => {
     const fetchData = async () => {
       //build the query parameters
-      const reqQueries = `sort=${sortByPrice}&title=${search}&priceMin=${priceValues[0]}&priceMax=${priceValues[1]}`;
+      const reqQueries = `sort=${sortByPrice}&title=${search}&priceMin=${priceValues[0]}&priceMax=${priceValues[1]}&limit=${limitPerPage}&page=${page}`;
 
       //axios get request with query params
       const response = await axios.get(
@@ -24,7 +27,7 @@ const Home = ({ sortByPrice, search, priceValues }) => {
     };
     fetchData();
     //refresh the request everytime one of these filter update (bad idea in practice)
-  }, [sortByPrice, search, priceValues]);
+  }, [sortByPrice, search, priceValues, page, limitPerPage]);
 
   // demander a Bastien s'il n'est pas plus judicieux de faire le filtre
   //en front plutot que de faire des requetes en back
@@ -44,6 +47,18 @@ const Home = ({ sortByPrice, search, priceValues }) => {
             })}
           </div>
         ) : null}
+        <div className="pagination">
+          <button
+            onClick={() => {
+              if (page > 0) setPage((prevState) => prevState - 1);
+            }}
+          >
+            Page précédente
+          </button>
+          <button onClick={() => setPage((prevState) => prevState + 1)}>
+            Page suivante
+          </button>
+        </div>
       </section>
     </main>
   );

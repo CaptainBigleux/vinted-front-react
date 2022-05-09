@@ -45,9 +45,8 @@ const Header = ({
                 placeholder="Recherche des articles"
                 value={search}
                 onChange={(event) => {
-                  {
-                    /*search state is updated which create another axios request for filtering*/
-                  }
+                  /*search state is updated which create another axios request for filtering*/
+
                   setSearch(event.target.value);
                 }}
               />
@@ -57,9 +56,8 @@ const Header = ({
                 <span>Trier par prix</span>
                 <Toggle
                   onChange={() => {
-                    {
-                      /*check whether sort is currently asc or desc and sets it to the !choice. updates axios request.*/
-                    }
+                    /*check whether sort is currently asc or desc and sets it to the !choice. updates axios request.*/
+
                     const currentPriceSort =
                       sortByPrice === "price-asc" ? "price-desc" : "price-asc";
                     setSortByPrice(currentPriceSort);

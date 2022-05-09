@@ -327,6 +327,20 @@ footer {
   margin: 36px 20px;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.pagination button {
+  padding: 10px;
+  background-color: var(--vinted-color);
+  color: white;
+  border-radius: 3px;
+}
+
 .link-product-card {
   text-decoration: none;
   cursor: default;
