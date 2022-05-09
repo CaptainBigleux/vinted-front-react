@@ -54,7 +54,10 @@ const App = () => {
             }
           />
           <Route path="/offer/:id" element={<Offer />} />
-          <Route path="/publish" element={<Publish />} />
+          <Route
+            path="/publish"
+            element={<Publish isLoggedIn={isLoggedIn} />}
+          />
         </Routes>
         <Footer title="Made by Adrien Callioni" />
       </Router>

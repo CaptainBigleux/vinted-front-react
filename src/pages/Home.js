@@ -17,7 +17,7 @@ const Home = ({
   const [isLoading, setIsLoading] = useState(true); // used to wait whether axios request is done or not
   const [data, setData] = useState(); // used to store axios request response
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [limitPerPage] = useState(10);
 
   const navigate = useNavigate();

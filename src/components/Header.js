@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import SignUp from "./SignUp";
 import Login from "./Login";
@@ -26,6 +26,7 @@ const Header = ({
   setIsLoggedIn,
   Cookies,
 }) => {
+  const navigate = useNavigate();
   return (
     <>
       <header>
@@ -100,7 +101,14 @@ const Header = ({
               </button>
             </>
           )}
-          <button className="top-header-sellnow-btn">Vends maintenant</button>
+          <button
+            className="top-header-sellnow-btn"
+            onClick={() => {
+              isLoggedIn ? navigate("/publish") : setShowModal("login");
+            }}
+          >
+            Vends maintenant
+          </button>
           <button className="top-header-info-btn">?</button>
           <select className="top-header-language-select">
             <option>FR</option>

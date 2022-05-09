@@ -554,6 +554,23 @@ footer {
 
 .publish-add-picture {
   height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-picture-btn {
+  color: var(--vinted-color);
+  background-color: white;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid var(--vinted-color);
+  font-weight: bold;
+  cursor: pointer;
+}
+.add-picture-btn:hover {
+  background-color: var(--vinted-color);
+  color: white;
 }
 
 .publish-title-desc-holder {

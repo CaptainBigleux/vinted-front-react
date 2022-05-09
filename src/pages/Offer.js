@@ -28,17 +28,18 @@ const Offer = () => {
       {!isLoading ? (
         <main className="offer-holder">
           <div className="offer-images-holder">
-            {data.product_pictures.map((img) => {
-              return (
-                <div key={img.asset_id} className="offer-images">
-                  <img
-                    className="offer-image-solo"
-                    src={img.secure_url}
-                    alt="product"
-                  />
-                </div>
-              );
-            })}
+            {data.product_pictures &&
+              data.product_pictures.map((img) => {
+                return (
+                  <div key={img.asset_id} className="offer-images">
+                    <img
+                      className="offer-image-solo"
+                      src={img.secure_url}
+                      alt="product"
+                    />
+                  </div>
+                );
+              })}
           </div>
           <SideCart {...data} />
         </main>
