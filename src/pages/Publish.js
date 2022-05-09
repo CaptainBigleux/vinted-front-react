@@ -62,7 +62,7 @@ const Publish = ({ isLoggedIn }) => {
             type="file"
             className="add-picture-btn"
             onChange={(event) => {
-              setPictures(event.target.pictures); // this is undefined.
+              setPictures(event.target.files);
             }}
           />
         </div>
