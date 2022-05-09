@@ -42,7 +42,7 @@ const Home = ({
   //en front plutot que de faire des requetes en back
 
   return (
-    <main className="main-holder">
+    <main>
       <div className="main-image-holder">
         <img className="main-image" src={hero} alt="vinted main" />
         <div className="main-image-holder-info-card">
@@ -56,7 +56,7 @@ const Home = ({
           </button>
         </div>
       </div>
-      <section className="category-holder">
+      <section>
         <h2>Toutes catégories</h2>
         {!isLoading ? (
           <div className="product-cards-holder">

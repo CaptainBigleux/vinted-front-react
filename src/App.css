@@ -288,9 +288,6 @@ footer {
   display: none;
 }
 
-.navbar {
-}
-
 .navigation {
   list-style-type: none;
   display: flex;
@@ -300,9 +297,6 @@ footer {
 
 .navigation li {
   color: grey;
-}
-
-.main-holder {
 }
 
 .main-image-holder {
@@ -339,9 +333,6 @@ footer {
   width: 100%;
   height: 390px;
   object-fit: cover;
-}
-
-.category-holder {
 }
 
 .product-cards-holder {
