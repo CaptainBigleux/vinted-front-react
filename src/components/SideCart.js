@@ -45,7 +45,7 @@ const SideCart = ({
         onClick={() =>
           //"state" name is mandatory
           navigate("/payment", {
-            state: { _id: _id, name: product_name, price: product_price },
+            state: { _id: _id, name: owner.username, price: product_price },
           })
         }
       >

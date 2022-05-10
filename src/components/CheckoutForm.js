@@ -3,18 +3,19 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
 import axios from "axios";
 
-const CheckoutForm = ({ _id }) => {
+const CheckoutForm = ({ _id, name }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [completed, setCompleted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    //manage the case where fields are empty
     const cardElement = elements.getElement(CardElement);
 
     const stripeResponse = await stripe.createToken(cardElement, {
-      name: "je ne sais pas ce que c'est",
+      name: name,
+      userId: _id,
     });
 
     const stripeToken = stripeResponse.token.id;
