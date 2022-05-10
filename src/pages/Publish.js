@@ -2,7 +2,7 @@ import React from "react";
 
 import { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Publish = ({ isLoggedIn }) => {
@@ -52,8 +52,8 @@ const Publish = ({ isLoggedIn }) => {
       console.log(error);
     }
   };
-
-  return (
+  //check if isLoggedIn because user could have typed the url
+  return isLoggedIn ? (
     <main className="publish-page">
       <div className="publish-holder">
         <h2>Vends ton article</h2>
@@ -65,6 +65,7 @@ const Publish = ({ isLoggedIn }) => {
               setPictures(event.target.files);
             }}
           />
+          <button type="file">Ajouter une photo</button>
         </div>
         <div className="publish-title-desc-holder">
           <div className="publish-inline-flex">
@@ -159,6 +160,8 @@ const Publish = ({ isLoggedIn }) => {
         </button>
       </div>
     </main>
+  ) : (
+    <Navigate to="/" />
   );
 };
 

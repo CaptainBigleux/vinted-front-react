@@ -68,7 +68,7 @@ const Home = ({
         <div className="pagination">
           <button
             onClick={() => {
-              if (page > 0) setPage((prevState) => prevState - 1);
+              if (page > 1) setPage((prevState) => prevState - 1);
             }}
           >
             Page précédente
