@@ -37,10 +37,12 @@ const Login = ({ setShowModal, setIsLoggedIn }) => {
     //if both are valid, make post request
     if (checkPassword && checkEmail) {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        "https://vinted-adrien.herokuapp.com/user/login",
         loginObject
       );
       setIsLoggedIn(Cookies.set("authenticated", response.data.token));
+      document.body.style.overflow = "scroll";
+
       //update modal in header so that it disappears. Could also redirect to Home with useNavigate
       setShowModal("none");
     }

@@ -29,7 +29,7 @@ const Home = ({
 
       //axios get request with query params
       const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offers?${reqQueries}`
+        `https://vinted-adrien.herokuapp.com/offers?${reqQueries}`
       );
       setData(response.data.offers);
       setIsLoading(false);

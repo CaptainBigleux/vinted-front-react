@@ -47,7 +47,7 @@ const Payment = ({ isLoggedIn }) => {
         <div className="payment-stripe">
           {isLoggedIn ? (
             <Elements stripe={stripePromise}>
-              <CheckoutForm />
+              <CheckoutForm _id={_id} />
             </Elements>
           ) : null}
         </div>

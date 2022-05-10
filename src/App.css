@@ -608,6 +608,7 @@ footer {
 }
 .publish-inline-flex * {
   width: 50%;
+  outline: none;
 }
 
 .publish-btn {
@@ -660,7 +661,12 @@ footer {
   margin: 10px 0;
 }
 
-.payment-stripe {
+.payment-stripe-field {
+  border-bottom: 1px solid grey;
+  padding: 10px 0;
+}
+
+.payment-stripe-btn {
   background-color: var(--vinted-color);
   padding: 10px;
   color: white;

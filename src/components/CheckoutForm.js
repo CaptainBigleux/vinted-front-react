@@ -3,7 +3,7 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
 import axios from "axios";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ _id }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [completed, setCompleted] = useState(false);
@@ -14,15 +14,18 @@ const CheckoutForm = () => {
     const cardElement = elements.getElement(CardElement);
 
     const stripeResponse = await stripe.createToken(cardElement, {
-      //id : "id de l'acheteur"
-      // name: "L'id de l'acheteur", doc
+      _id,
     });
-    console.log(stripeResponse);
+
     const stripeToken = stripeResponse.token.id;
 
-    const response = await axios.post("http://localhost:3000/payment", {
-      stripeToken,
-    });
+    const response = await axios.post(
+      "https://vinted-adrien.herokuapp.com/payment",
+      {
+        stripeToken,
+        _id,
+      }
+    );
     console.log(response.data);
     if (response.data.status === "succeeded") setCompleted(true);
   };
@@ -32,9 +35,13 @@ const CheckoutForm = () => {
       {completed ? (
         <span>Paiement effectué</span>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <CardElement />
-          <button type="submit">Payer</button>
+        <form onSubmit={handleSubmit} className="payment-stripe-form">
+          <div className="payment-stripe-field">
+            <CardElement />
+          </div>
+          <button className="payment-stripe-btn" type="submit">
+            Payer
+          </button>
         </form>
       )}
     </>

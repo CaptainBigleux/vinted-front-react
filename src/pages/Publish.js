@@ -10,35 +10,39 @@ const Publish = ({ isLoggedIn }) => {
 
   const navigate = useNavigate();
 
-  const [pictures, setPictures] = useState(null); // all the pictures, including the first one
+  const [product_pictures, setProduct_Pictures] = useState(null); // all the pictures, including the first one
 
-  const [product_name, setProduct_Name] = useState("");
-  const [product_description, setProduct_Description] = useState("");
-  const [product_price, setProduct_Price] = useState("");
-  const [brand, setBrand] = useState("");
-  const [condition, setCondition] = useState("");
-  const [size, setSize] = useState("");
-  const [color, setColor] = useState("");
-  const [city, setCity] = useState("");
+  const [product_name, setProduct_Name] = useState("Chemise");
+  const [product_description, setProduct_Description] = useState(
+    "Bleue neuve, bonne qualité"
+  );
+  const [product_price, setProduct_Price] = useState(30);
+  const [brand, setBrand] = useState("monoprix");
+  const [condition, setCondition] = useState("neuve");
+  const [size, setSize] = useState("L");
+  const [color, setColor] = useState("bleue");
+  const [city, setCity] = useState("Brest");
   const [exchange, setExchange] = useState(false);
-  const [product_image, setProduct_Image] = useState(""); // only the first, "main" picture
   //on my vinted, will need to add product_pictures and send pictures state
 
   const submitOffer = async () => {
     try {
       const formData = new FormData();
-      formData.append("title", product_name);
-      formData.append("description", product_description);
-      formData.append("price", product_price);
+      formData.append("product_name", product_name);
+      formData.append("product_description", product_description);
+      formData.append("product_price", product_price);
       formData.append("city", city);
       formData.append("brand", brand);
+      formData.append("condition", condition);
       formData.append("size", size);
       formData.append("color", color);
-      formData.append("picture", pictures[0]);
+      formData.append("product_image", product_pictures[0]);
       formData.append("exchange", exchange);
+      formData.append("product_pictures", product_pictures);
+      formData.append("product_pictures_length", product_pictures.length);
 
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        "https://vinted-adrien.herokuapp.com/offer/publish",
         formData,
         {
           headers: {
@@ -58,14 +62,16 @@ const Publish = ({ isLoggedIn }) => {
       <div className="publish-holder">
         <h2>Vends ton article</h2>
         <div className="publish-add-picture">
-          <input
-            type="file"
-            className="add-picture-btn"
-            onChange={(event) => {
-              setPictures(event.target.files);
-            }}
-          />
-          <button type="file">Ajouter une photo</button>
+          <label className="add-picture-btn">
+            + Ajouter une photo
+            <input
+              type="file"
+              hidden
+              onChange={(event) => {
+                setProduct_Pictures(event.target.files);
+              }}
+            />
+          </label>
         </div>
         <div className="publish-title-desc-holder">
           <div className="publish-inline-flex">
@@ -149,6 +155,7 @@ const Publish = ({ isLoggedIn }) => {
             <div className="publish-inline-flex">
               <input
                 type="checkbox"
+                value={exchange}
                 onChange={() => setExchange((prevState) => !prevState)}
               />
               <span>Je suis intéressé par les échanges</span>
