@@ -621,6 +621,52 @@ footer {
   margin: 0 0 0 auto;
 }
 
+.payment-page {
+  margin: 20px auto;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.payment-page * {
+  width: 100%;
+}
+
+.payment-top-half-holder,
+.payment-bottom-half-holder {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.payment-top-half-holder {
+  color: grey;
+}
+
+.payment-bottom-half-holder > p:first-child {
+  font-weight: bold;
+}
+
+.payment-inline-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-desc {
+  margin: 10px 0;
+}
+
+.payment-stripe {
+  background-color: var(--vinted-color);
+  padding: 10px;
+  color: white;
+  margin: 20px 0;
+}
+
 @media (max-width: 1200px) {
 }
 

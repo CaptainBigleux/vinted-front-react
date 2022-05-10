@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useNavigate } from "react-router-dom";
+
 const SideCart = ({
   product_price,
   product_details,
@@ -7,8 +9,9 @@ const SideCart = ({
   product_name,
   owner,
   //   product_date,
-  //   _id,
+  _id,
 }) => {
+  const navigate = useNavigate();
   return (
     <aside className="side-cart">
       <p className="side-cart-product-price">{product_price} €</p>
@@ -37,7 +40,17 @@ const SideCart = ({
         </span>
         <span>{owner.account.username}</span>
       </div>
-      <button className="side-cart-buy-btn">Acheter</button>
+      <button
+        className="side-cart-buy-btn"
+        onClick={() =>
+          //"state" name is mandatory
+          navigate("/payment", {
+            state: { _id: _id, name: product_name, price: product_price },
+          })
+        }
+      >
+        Acheter
+      </button>
     </aside>
   );
 };

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Cookies from "js-cookie";
 
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -57,6 +57,10 @@ const App = () => {
           <Route
             path="/publish"
             element={<Publish isLoggedIn={isLoggedIn} />}
+          />
+          <Route
+            path="/payment"
+            element={<Payment isLoggedIn={isLoggedIn} />}
           />
         </Routes>
         <Footer title="Made by Adrien Callioni" />
