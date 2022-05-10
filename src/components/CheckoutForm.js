@@ -14,7 +14,7 @@ const CheckoutForm = ({ _id }) => {
     const cardElement = elements.getElement(CardElement);
 
     const stripeResponse = await stripe.createToken(cardElement, {
-      _id,
+      name: "je ne sais pas ce que c'est",
     });
 
     const stripeToken = stripeResponse.token.id;
