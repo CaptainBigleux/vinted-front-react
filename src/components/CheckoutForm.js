@@ -3,7 +3,7 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
 import axios from "axios";
 
-const CheckoutForm = ({ _id, name }) => {
+const CheckoutForm = ({ _id }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [completed, setCompleted] = useState(false);
@@ -11,19 +11,18 @@ const CheckoutForm = ({ _id, name }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     //manage the case where fields are empty
-    const cardElement = elements.getElement(CardElement);
-
-    const stripeResponse = await stripe.createToken(cardElement, {
-      name: name,
-      userId: _id,
+    //retrieve card info
+    const cardInfos = elements.getElement(CardElement);
+    //send card info and check if valid
+    const stripeResponse = await stripe.createToken(cardInfos, {
+      name: _id,
     });
-
-    const stripeToken = stripeResponse.token.id;
 
     const response = await axios.post(
       "https://vinted-adrien.herokuapp.com/payment",
       {
-        stripeToken,
+        token: stripeResponse.token.id,
+        _id: _id,
       }
     );
     console.log(response.data);

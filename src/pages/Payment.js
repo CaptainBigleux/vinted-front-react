@@ -14,7 +14,7 @@ const Payment = ({ isLoggedIn }) => {
   const location = useLocation();
   //info coming from SideCart
   //state name is mandatory
-  const { _id, name, price } = location.state;
+  const { _id, product_name, price } = location.state;
   return (
     <main className="payment-page">
       <div className="payment-top-half-holder">
@@ -40,14 +40,14 @@ const Payment = ({ isLoggedIn }) => {
         </p>
         <p className="payment-desc">
           Il ne vous reste plus qu'une étape pour vous offrir{" "}
-          <strong>{name}</strong>. Vous allez payer{" "}
+          <strong>{product_name}</strong>. Vous allez payer{" "}
           <strong>{parseFloat(price + 0.4 + 0.8).toFixed(2) + " €"}</strong>{" "}
           (frais de protection et de frais de port inclus).
         </p>
         <div className="payment-stripe">
           {isLoggedIn ? (
             <Elements stripe={stripePromise}>
-              <CheckoutForm _id={_id} name={name} />
+              <CheckoutForm _id={_id} />
             </Elements>
           ) : null}
         </div>
