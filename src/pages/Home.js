@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { createSearchParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import ProductCard from "../components/ProductCard";
@@ -37,7 +37,7 @@ const Home = ({
     };
     fetchData();
     //refresh the request everytime one of these filter update (bad idea in practice)
-  }, [sortByPrice, search, priceValues, page, limitPerPage]);
+  }, [sortByPrice, search, priceValues, page, limitPerPage, skip]);
 
   // demander a Bastien s'il n'est pas plus judicieux de faire le filtre
   //en front plutot que de faire des requetes en back
