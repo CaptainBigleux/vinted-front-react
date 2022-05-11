@@ -24,7 +24,6 @@ const CheckoutForm = ({ _id, name }) => {
       "https://vinted-adrien.herokuapp.com/payment",
       {
         stripeToken,
-        _id,
       }
     );
     console.log(response.data);

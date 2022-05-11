@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import ProductCard from "../components/ProductCard";
@@ -18,14 +18,15 @@ const Home = ({
   const [data, setData] = useState(); // used to store axios request response
 
   const [page, setPage] = useState(1);
-  const [limitPerPage] = useState(10);
+  const [skip, setSkip] = useState(0);
+  const [limitPerPage] = useState(8);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       //build the query parameters
-      const reqQueries = `sort=${sortByPrice}&title=${search}&priceMin=${priceValues[0]}&priceMax=${priceValues[1]}&limit=${limitPerPage}&page=${page}`;
+      const reqQueries = `sort=${sortByPrice}&title=${search}&priceMin=${priceValues[0]}&priceMax=${priceValues[1]}&limit=${limitPerPage}&page=${page}&skip=${skip}`;
 
       //axios get request with query params
       const response = await axios.get(
@@ -68,12 +69,22 @@ const Home = ({
         <div className="pagination">
           <button
             onClick={() => {
-              if (page > 1) setPage((prevState) => prevState - 1);
+              if (page > 1) {
+                setSkip((prevState) => prevState - limitPerPage);
+                setPage((prevState) => prevState - 1);
+              }
             }}
           >
             Page précédente
           </button>
-          <button onClick={() => setPage((prevState) => prevState + 1)}>
+          <button
+            onClick={() => {
+              if (data.length > skip) {
+                setSkip((prevState) => prevState + limitPerPage);
+                setPage((prevState) => prevState + 1);
+              }
+            }}
+          >
             Page suivante
           </button>
         </div>

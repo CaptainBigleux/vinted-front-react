@@ -12,16 +12,14 @@ const Publish = ({ isLoggedIn }) => {
 
   const [product_pictures, setProduct_Pictures] = useState(null); // all the pictures, including the first one
 
-  const [product_name, setProduct_Name] = useState("Chemise");
-  const [product_description, setProduct_Description] = useState(
-    "Bleue neuve, bonne qualité"
-  );
-  const [product_price, setProduct_Price] = useState(30);
-  const [brand, setBrand] = useState("monoprix");
-  const [condition, setCondition] = useState("neuve");
-  const [size, setSize] = useState("L");
-  const [color, setColor] = useState("bleue");
-  const [city, setCity] = useState("Brest");
+  const [product_name, setProduct_Name] = useState("");
+  const [product_description, setProduct_Description] = useState("");
+  const [product_price, setProduct_Price] = useState(0);
+  const [brand, setBrand] = useState("");
+  const [condition, setCondition] = useState("");
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
+  const [city, setCity] = useState("");
   const [exchange, setExchange] = useState(false);
   //on my vinted, will need to add product_pictures and send pictures state
 
