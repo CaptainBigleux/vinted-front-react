@@ -3,7 +3,7 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
 import axios from "axios";
 
-const CheckoutForm = ({ _id, isLoggedIn }) => {
+const CheckoutForm = ({ userID, productID, isLoggedIn }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [completed, setCompleted] = useState(false);
@@ -16,13 +16,13 @@ const CheckoutForm = ({ _id, isLoggedIn }) => {
       const cardInfos = elements.getElement(CardElement);
       //send card info and check if valid
       const stripeResponse = await stripe.createToken(cardInfos, {
-        name: _id,
+        name: userID,
       });
       const response = await axios.post(
         "https://vinted-adrien.herokuapp.com/payment",
         {
           stripeToken: stripeResponse.token.id,
-          _id: _id,
+          productID: productID,
         },
         {
           headers: {

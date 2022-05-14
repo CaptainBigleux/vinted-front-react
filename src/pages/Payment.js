@@ -11,7 +11,7 @@ const Payment = ({ isLoggedIn }) => {
 
   //info coming from SideCart
   //state name is mandatory
-  const { _id, product_name, price } = location.state;
+  const { userID, productID, product_name, price } = location.state;
 
   const stripePromise = loadStripe(
     "pk_test_51KxqguJXU9GKJOxxn1vdsqGj0HYGuLNT61h5REsvrEFKDNMGPP3BXRrNt7RJC3UBowZUXs95uJtIDflrg48Fo4f800oVJL5VRy"
@@ -48,7 +48,11 @@ const Payment = ({ isLoggedIn }) => {
         <div className="payment-stripe">
           {isLoggedIn ? (
             <Elements stripe={stripePromise}>
-              <CheckoutForm _id={_id} isLoggedIn={isLoggedIn} />
+              <CheckoutForm
+                userID={userID}
+                productID={productID}
+                isLoggedIn={isLoggedIn}
+              />
             </Elements>
           ) : null}
         </div>

@@ -9,7 +9,7 @@ const SideCart = ({
   product_name,
   owner,
   //   product_date,
-  // _id,
+  _id,
   isLoggedIn,
   setShowModal,
 }) => {
@@ -49,7 +49,8 @@ const SideCart = ({
           isLoggedIn
             ? navigate("/payment", {
                 state: {
-                  _id: owner._id,
+                  userID: owner._id,
+                  productID: _id,
                   product_name: product_name,
                   price: product_price,
                 },
