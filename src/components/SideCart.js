@@ -9,7 +9,9 @@ const SideCart = ({
   product_name,
   owner,
   //   product_date,
-  _id,
+  // _id,
+  isLoggedIn,
+  setShowModal,
 }) => {
   const navigate = useNavigate();
   return (
@@ -44,13 +46,15 @@ const SideCart = ({
         className="side-cart-buy-btn"
         onClick={() =>
           //"state" name is mandatory
-          navigate("/payment", {
-            state: {
-              _id: owner._id,
-              product_name: product_name,
-              price: product_price,
-            },
-          })
+          isLoggedIn
+            ? navigate("/payment", {
+                state: {
+                  _id: owner._id,
+                  product_name: product_name,
+                  price: product_price,
+                },
+              })
+            : setShowModal("signup")
         }
       >
         Acheter

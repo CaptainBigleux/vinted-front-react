@@ -18,11 +18,10 @@ const CheckoutForm = ({ _id, isLoggedIn }) => {
       const stripeResponse = await stripe.createToken(cardInfos, {
         name: _id,
       });
-
       const response = await axios.post(
         "https://vinted-adrien.herokuapp.com/payment",
         {
-          token: stripeResponse.token.id,
+          stripeToken: stripeResponse.token.id,
           _id: _id,
         },
         {
@@ -31,7 +30,6 @@ const CheckoutForm = ({ _id, isLoggedIn }) => {
           },
         }
       );
-      console.log(response.data);
       if (response.data.status === "succeeded") setCompleted(true);
     } catch (error) {
       console.log(error);
@@ -47,9 +45,15 @@ const CheckoutForm = ({ _id, isLoggedIn }) => {
           <div className="payment-stripe-field">
             <CardElement />
           </div>
-          <button className="payment-stripe-btn" type="submit">
-            Payer
-          </button>
+          <>
+            {completed ? (
+              <div>Paiement confirmé !</div>
+            ) : (
+              <button className="payment-stripe-btn" type="submit">
+                Payer
+              </button>
+            )}
+          </>
         </form>
       )}
     </>

@@ -6,15 +6,16 @@ import CheckoutForm from "../components/CheckoutForm";
 
 import { useLocation } from "react-router-dom";
 
-const stripePromise = loadStripe(
-  "pk_test_51KxqguJXU9GKJOxxn1vdsqGj0HYGuLNT61h5REsvrEFKDNMGPP3BXRrNt7RJC3UBowZUXs95uJtIDflrg48Fo4f800oVJL5VRy"
-);
-
 const Payment = ({ isLoggedIn }) => {
   const location = useLocation();
+
   //info coming from SideCart
   //state name is mandatory
   const { _id, product_name, price } = location.state;
+
+  const stripePromise = loadStripe(
+    "pk_test_51KxqguJXU9GKJOxxn1vdsqGj0HYGuLNT61h5REsvrEFKDNMGPP3BXRrNt7RJC3UBowZUXs95uJtIDflrg48Fo4f800oVJL5VRy"
+  );
   return (
     <main className="payment-page">
       <div className="payment-top-half-holder">

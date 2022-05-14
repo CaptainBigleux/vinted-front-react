@@ -6,7 +6,7 @@ import SideCart from "../components/SideCart";
 
 import axios from "axios";
 
-const Offer = () => {
+const Offer = ({ isLoggedIn, setShowModal }) => {
   const [data, setData] = useState(); // used to store axios request response
   const [isLoading, setIsLoading] = useState(true); // used to wait whether axios request is done or not
 
@@ -41,7 +41,11 @@ const Offer = () => {
                 );
               })}
           </div>
-          <SideCart {...data} />
+          <SideCart
+            {...data}
+            isLoggedIn={isLoggedIn}
+            setShowModal={setShowModal}
+          />
         </main>
       ) : null}
     </main>

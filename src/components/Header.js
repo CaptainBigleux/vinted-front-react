@@ -75,8 +75,7 @@ const Header = ({
               className="top-header-disconnect-btn"
               onClick={() => {
                 Cookies.remove("authenticated");
-                //string to bool === false which is what I want. "authenticated" becomes false
-                setIsLoggedIn((prevState) => !prevState);
+                setIsLoggedIn(false);
               }}
             >
               Se Déconnecter

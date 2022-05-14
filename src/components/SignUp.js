@@ -40,7 +40,9 @@ const SignUp = ({ setShowModal, setIsLoggedIn }) => {
         "https://vinted-adrien.herokuapp.com/user/signup",
         signUpObject
       );
-      setIsLoggedIn(Cookies.set("authenticated", response.data.token));
+
+      Cookies.set("authenticated", response.data.token);
+      setIsLoggedIn(response.data.token);
       document.body.style.overflow = "scroll";
 
       //update modal in header so that it disappears. Could also redirect to Home with useNavigate

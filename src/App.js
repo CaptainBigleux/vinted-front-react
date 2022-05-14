@@ -53,7 +53,12 @@ const App = () => {
               />
             }
           />
-          <Route path="/offer/:id" element={<Offer />} />
+          <Route
+            path="/offer/:id"
+            element={
+              <Offer isLoggedIn={isLoggedIn} setShowModal={setShowModal} />
+            }
+          />
           <Route
             path="/publish"
             element={<Publish isLoggedIn={isLoggedIn} />}
